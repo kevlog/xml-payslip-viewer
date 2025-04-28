@@ -1,28 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Slip Gaji</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Slip Pembayaran Gaji</h1>
-    <div id="info-karyawan"></div>
-    <h2>Rincian Gaji</h2>
-    <table id="tabel-gaji">
-      <thead>
-        <tr>
-          <th>Deskripsi</th>
-          <th>Jumlah (IDR)</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <div id="bank-info"></div>
-  </div>
+<html lang="id">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Slip Gaji - XML Viewer</title>
 
-  <script src="script.js"></script>
-</body>
+      <!-- TailwindCSS CDN -->
+      <script src="https://cdn.tailwindcss.com"></script>
+
+      <!-- Flowbite CDN -->
+      <script src="https://unpkg.com/flowbite@2.2.0/dist/flowbite.min.js"></script>
+
+      <!-- DaisyUI Theme -->
+      <script>
+         tailwind.config = {
+            plugins: [daisyui],
+            theme: {
+               extend: {},
+            },
+            daisyui: {
+               themes: ['corporate', 'light', 'dark', 'business'],
+            },
+         };
+      </script>
+   </head>
+   <body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+      <h1 class="text-3xl font-bold mb-6 text-blue-700">Viewer Slip Gaji XML</h1>
+
+      <div class="w-full max-w-4xl bg-white p-8 rounded-xl shadow-xl space-y-6">
+         <!-- Upload Form -->
+         <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Upload File XML</label>
+            <input id="xmlFile" type="file" accept=".xml" class="file-input file-input-bordered w-full" />
+         </div>
+
+         <!-- Hasil -->
+         <div id="output" class="overflow-x-auto mt-8 hidden">
+            <table class="table table-zebra w-full text-sm text-left text-gray-700">
+               <thead>
+                  <tr>
+                     <th>Deskripsi</th>
+                     <th class="text-right">Amount (IDR)</th>
+                  </tr>
+               </thead>
+               <tbody id="table-body">
+                  <!-- Data dari XML akan masuk di sini -->
+               </tbody>
+            </table>
+         </div>
+      </div>
+
+      <!-- Script -->
+      <script src="script.js"></script>
+   </body>
 </html>
